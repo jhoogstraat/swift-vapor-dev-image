@@ -6,9 +6,7 @@ RUN apt update -y \
 
 # Install swift-format
 ARG SWIFT_FORMAT_VERSION=0.50700.1
-RUN curl -L -o swift_format.zip 
-https://github.com/apple/swift-format/archive/refs/tags/$SWIFT_FORMAT_VERSION.zip 
-\
+RUN curl -L -o swift_format.zip https://github.com/apple/swift-format/archive/refs/tags/$SWIFT_FORMAT_VERSION.zip \
     && unzip swift_format.zip -d ./swift-format \
     && cd swift-format/swift-format-$SWIFT_FORMAT_VERSION \
     && swift build -c release \
@@ -23,18 +21,11 @@ RUN git clone --depth 1 https://github.com/vapor/toolbox.git \
 # Install Protobuf (+ swift plugin)
 ARG PROTOC_SWIFT_VERSION=1.21.0
 ARG PROTOC_VERSION=22.0
-RUN curl -L -o plugin.zip 
-https://github.com/apple/swift-protobuf/archive/refs/tags/$PROTOC_SWIFT_VERSION.zip 
-\
+RUN curl -L -o plugin.zip https://github.com/apple/swift-protobuf/archive/refs/tags/$PROTOC_SWIFT_VERSION.zip \
 	&& unzip plugin.zip -d ./plugin \
-	&& (cd plugin/swift-protobuf-$PROTOC_SWIFT_VERSION && swift build 
--c release) \
-	&& cp 
-./plugin/swift-protobuf-$PROTOC_SWIFT_VERSION/.build/release/protoc-gen-swift 
-/usr/local/bin/protoc-gen-swift \
+	&& (cd plugin/swift-protobuf-$PROTOC_SWIFT_VERSION && swift build -c release) \
+	&& cp ./plugin/swift-protobuf-$PROTOC_SWIFT_VERSION/.build/release/protoc-gen-swift /usr/local/bin/protoc-gen-swift \
 	&& rm -rf plugin.zip /plugin \
-    && curl -L -o protoc.zip 
-https://github.com/google/protobuf/releases/download/v$PROTOC_VERSION/protoc-$PROTOC_VERSION-linux-x86_64.zip 
-\
+    && curl -L -o protoc.zip https://github.com/google/protobuf/releases/download/v$PROTOC_VERSION/protoc-$PROTOC_VERSION-linux-x86_64.zip \
 	&& unzip protoc.zip -d /usr/local/ \
 	&& rm -rf protoc.zip
