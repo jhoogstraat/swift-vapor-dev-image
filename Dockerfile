@@ -10,7 +10,7 @@ ARG SWIFT_FORMAT_VERSION=0.50700.1
 WORKDIR /swift-format
 RUN wget -qO- https://github.com/apple/swift-format/archive/${SWIFT_FORMAT_VERSION}.tar.gz | tar zxf - --strip-components 1 \
     && swift build -c release \
-    && mv .build/*/release/swift-format /tools/swift-format
+    && mv .build/*/release/swift-format /tools/bin/swift-format
 
 # Download protoc
 ARG PROTOC_VERSION=22.1
