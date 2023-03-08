@@ -32,9 +32,10 @@ RUN wget -qO- https://github.com/vapor/toolbox/archive/${VAPOR_TOOLBOX_VERSION}.
 # Download protoc
 WORKDIR /protoc
 RUN wget -qO protoc.zip https://github.com/google/protobuf/releases/download/v$PROTOC_VERSION/protoc-$PROTOC_VERSION-linux-x86_64.zip \
-	&& unzip -d /tools protoc.zip \
+    && unzip -d /tools protoc.zip \
     && rm /tools/readme.txt
-	
+
+
 FROM swift:5.7-jammy
 
 # Install tools (libsqlite3-dev=SQLite)
