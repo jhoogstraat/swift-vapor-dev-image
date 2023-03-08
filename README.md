@@ -3,8 +3,8 @@
 ## Example `devcontainer.json`:
 ```json
 {
-  "name": "vapor-project",
-  "image": "jhoogstraat/swift-vapor-dev:latest",
+  "name": "inventori-ordering",
+  "image": "jhoogstraat/swift-vapor-dev",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": "false",
@@ -24,6 +24,7 @@
     "seccomp=unconfined"
   ],
   "customizations": {
+    // Configure properties specific to VS Code.
     "vscode": {
       "settings": {
         "lldb.library": "/usr/lib/liblldb.so",
@@ -33,8 +34,8 @@
           "path": "/usr/local/bin/protoc",
           "compile_on_save": false,
           "options": [
-            "--proto_path=${workspaceRoot}",
-            "--swift_out=${workspaceRoot}/Generated"
+            "--proto_path=${workspaceRoot}/Sources/App/Models/Requests",
+            "--swift_out=${workspaceRoot}/Sources/App/Models/_Generated"
           ]
         }
       },
