@@ -2,7 +2,7 @@ FROM swift:5.7-jammy
 
 # Install tools
 RUN apt update -y \
-    && apt install -y make unzip wget
+    && apt install -y make unzip wget \
     && mkdir /tools
 
 # Download and build swift-format
