@@ -2,7 +2,7 @@ FROM swift:5.7-jammy
 
 # Install tools
 RUN apt update -y \
-    && apt install -y make unzip curl
+    && apt install -y make unzip wget
 
 # Download and build swift-format
 ARG SWIFT_FORMAT_VERSION=0.50700.1
