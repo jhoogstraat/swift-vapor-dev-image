@@ -16,7 +16,7 @@ RUN wget -qO- https://github.com/apple/swift-format/archive/${SWIFT_FORMAT_VERSI
 ARG PROTOC_VERSION=22.1
 WORKDIR /protoc
 RUN wget -qO protoc.zip https://github.com/google/protobuf/releases/download/v$PROTOC_VERSION/protoc-$PROTOC_VERSION-linux-x86_64.zip \
-	&& unzip -d /tools
+	&& unzip -d /tools protoc.zip
 	
 # Download and build protoc-gen-swift
 ARG PROTOC_GEN_SWIFT_VERSION=1.21.0
@@ -40,4 +40,4 @@ RUN apt update -y && apt install -y \
     libsqlite3-dev
     
 # Copy swift-format, protoc, protoc-gen-swift and vapor
-COPY --from=0 /tools/* /usr
+COPY --from=0 /tools/**/* /usr
